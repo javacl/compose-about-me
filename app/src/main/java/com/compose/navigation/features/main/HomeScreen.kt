@@ -60,9 +60,9 @@ fun HomeScreen(mainNavController: NavHostController) {
         }
     ) { innerPadding ->
         NavHost(
-            navController,
+            navController = navController,
             startDestination = BottomNavigationScreen.Store.route,
-            Modifier.padding(innerPadding)
+            modifier = Modifier.padding(innerPadding)
         ) {
             composable(BottomNavigationScreen.Store.route) {
                 val viewModel = hiltViewModel<StoreViewModel>()

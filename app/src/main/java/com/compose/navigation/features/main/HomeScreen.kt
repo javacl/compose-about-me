@@ -1,12 +1,19 @@
 package com.compose.navigation.features.main
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.painterResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
@@ -17,8 +24,32 @@ import androidx.navigation.compose.rememberNavController
 import com.compose.navigation.core.ui.util.BottomNavigationScreen
 
 @Composable
-fun HomeScreen(mainNavController: NavHostController) {
+fun HomeScreen(
+    lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current,
+    mainNavController: NavHostController
+) {
     val navController = rememberNavController()
+    val context = LocalContext.current
+    DisposableEffect(lifecycleOwner) {
+        // Create an observer that triggers our remembered callbacks
+        // for sending analytics events
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_START) {
+                Toast.makeText(context, "on start", Toast.LENGTH_LONG).show()
+            } else if (event == Lifecycle.Event.ON_STOP) {
+                Toast.makeText(context, "on stop", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        // Add the observer to the lifecycle
+        lifecycleOwner.lifecycle.addObserver(observer)
+
+        // When the effect leaves the Composition, remove the observer
+        onDispose {
+            lifecycleOwner.lifecycle.removeObserver(observer)
+        }
+    }
+
     val items = listOf(
         BottomNavigationScreen.Store,
         BottomNavigationScreen.Cart,

@@ -14,9 +14,7 @@ fun MainScreen() {
         startDestination = Screen.Splash.route
     ) {
         composable(Screen.Splash.route) { SplashScreen(navController = navController) }
-        composable(Screen.Home.route) { HomeScreen() }
-        composable(Screen.Store.route) { StoreScreen() }
-        composable(Screen.Cart.route) { CartScreen() }
-        composable(Screen.Profile.route) { ProfileScreen() }
+        composable(Screen.Home.route) { HomeScreen(mainNavController = navController) }
+        composable(Screen.Detail.route) { DetailScreen() }
     }
 }

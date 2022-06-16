@@ -4,6 +4,7 @@
     package="com.compose.navigation">
 
     <application
+        android:name=".features.App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"

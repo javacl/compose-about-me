@@ -13,7 +13,10 @@ import androidx.navigation.NavHostController
 import com.compose.navigation.core.ui.util.Screen
 
 @Composable
-fun StoreScreen(mainNavController: NavHostController) {
+fun StoreScreen(
+    viewModel: StoreViewModel,
+    mainNavController: NavHostController
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()

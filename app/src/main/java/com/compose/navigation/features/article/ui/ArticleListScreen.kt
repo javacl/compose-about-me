@@ -1,4 +1,4 @@
-package com.compose.navigation.features.main
+package com.compose.navigation.features.article.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,21 +10,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
-import com.compose.navigation.core.ui.util.Screen
+import com.compose.navigation.core.util.navigation.NavigationRoutes
 
 @Composable
-fun CartScreen(mainNavController: NavHostController) {
+fun ArticleListScreen(
+    viewModel: ArticleListViewModel,
+    mainNavController: NavHostController
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .wrapContentSize(Alignment.Center)
     ) {
         Button(
-            onClick = { mainNavController.navigate(Screen.Detail.route) },
+            onClick = { mainNavController.navigate(NavigationRoutes.Article.route) },
             modifier = Modifier.align(Alignment.CenterHorizontally)
         ) {
             Text(
-                text = "Cart",
+                text = "ArticleList",
                 style = MaterialTheme.typography.h6
             )
         }

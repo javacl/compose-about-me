@@ -1,4 +1,4 @@
-package com.compose.navigation.core.ui.theme
+package com.compose.navigation.core.util.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

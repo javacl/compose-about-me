@@ -1,4 +1,4 @@
-package com.compose.navigation.features.main
+package com.compose.navigation.features.user.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,21 +10,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
-import com.compose.navigation.core.ui.util.Screen
+import com.compose.navigation.core.util.navigation.NavigationRoutes
 
 @Composable
-fun ProfileScreen(mainNavController: NavHostController) {
+fun UserProfileScreen(
+    viewModel: UserProfileViewModel,
+    mainNavController: NavHostController
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .wrapContentSize(Alignment.Center)
     ) {
         Button(
-            onClick = { mainNavController.navigate(Screen.Detail.route) },
+            onClick = { mainNavController.navigate(NavigationRoutes.Article.route) },
             modifier = Modifier.align(Alignment.CenterHorizontally)
         ) {
             Text(
-                text = "Profile",
+                text = "UserProfile",
                 style = MaterialTheme.typography.h6
             )
         }

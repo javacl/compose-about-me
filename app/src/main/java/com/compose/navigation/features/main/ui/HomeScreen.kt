@@ -1,4 +1,4 @@
-package com.compose.navigation.features.main
+package com.compose.navigation.features.main.ui
 
 import android.util.Log
 import androidx.compose.foundation.layout.padding
@@ -9,6 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
@@ -20,7 +21,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.compose.navigation.core.ui.util.BottomNavigationScreen
+import com.compose.navigation.core.util.navigation.NavigationRoutes
+import com.compose.navigation.features.article.ui.ArticleListScreen
+import com.compose.navigation.features.article.ui.ArticleListViewModel
+import com.compose.navigation.features.user.ui.UserProfileScreen
+import com.compose.navigation.features.user.ui.UserProfileViewModel
 
 @Composable
 fun HomeScreen(
@@ -49,9 +54,8 @@ fun HomeScreen(
     }
 
     val items = listOf(
-        BottomNavigationScreen.Store,
-        BottomNavigationScreen.Cart,
-        BottomNavigationScreen.Profile
+        NavigationRoutes.ArticleList,
+        NavigationRoutes.UserProfile
     )
     Scaffold(
         bottomBar = {
@@ -63,10 +67,9 @@ fun HomeScreen(
                         icon = {
                             Icon(
                                 painterResource(id = screen.icon),
-                                contentDescription = screen.title
+                                contentDescription = stringResource(id = screen.title)
                             )
                         },
-                        label = { Text(screen.title) },
                         selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
                         onClick = {
                             navController.navigate(screen.route) {
@@ -90,23 +93,20 @@ fun HomeScreen(
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = BottomNavigationScreen.Store.route,
+            startDestination = NavigationRoutes.ArticleList.route,
             modifier = Modifier.padding(innerPadding)
         ) {
-            composable(BottomNavigationScreen.Store.route) {
-                val viewModel = hiltViewModel<StoreViewModel>()
-                StoreScreen(
+            composable(NavigationRoutes.ArticleList.route) {
+                val viewModel = hiltViewModel<ArticleListViewModel>()
+                ArticleListScreen(
                     viewModel = viewModel,
                     mainNavController = mainNavController
                 )
             }
-            composable(BottomNavigationScreen.Cart.route) {
-                CartScreen(
-                    mainNavController = mainNavController
-                )
-            }
-            composable(BottomNavigationScreen.Profile.route) {
-                ProfileScreen(
+            composable(NavigationRoutes.UserProfile.route) {
+                val viewModel = hiltViewModel<UserProfileViewModel>()
+                UserProfileScreen(
+                    viewModel = viewModel,
                     mainNavController = mainNavController
                 )
             }

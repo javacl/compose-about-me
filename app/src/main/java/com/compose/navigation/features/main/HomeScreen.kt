@@ -1,13 +1,12 @@
 package com.compose.navigation.features.main
 
-import android.widget.Toast
+import android.util.Log
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.painterResource
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -29,15 +28,14 @@ fun HomeScreen(
     mainNavController: NavHostController
 ) {
     val navController = rememberNavController()
-    val context = LocalContext.current
     DisposableEffect(lifecycleOwner) {
         // Create an observer that triggers our remembered callbacks
         // for sending analytics events
         val observer = LifecycleEventObserver { _, event ->
             if (event == Lifecycle.Event.ON_START) {
-                Toast.makeText(context, "on start", Toast.LENGTH_LONG).show()
+                Log.d("ComposeLifecycle", "on start")
             } else if (event == Lifecycle.Event.ON_STOP) {
-                Toast.makeText(context, "on stop", Toast.LENGTH_LONG).show()
+                Log.d("ComposeLifecycle", "on stop")
             }
         }
 

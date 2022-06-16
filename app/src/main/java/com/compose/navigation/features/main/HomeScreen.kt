@@ -100,8 +100,16 @@ fun HomeScreen(
                     mainNavController = mainNavController
                 )
             }
-            composable(BottomNavigationScreen.Cart.route) { CartScreen(mainNavController = mainNavController) }
-            composable(BottomNavigationScreen.Profile.route) { ProfileScreen(mainNavController = mainNavController) }
+            composable(BottomNavigationScreen.Cart.route) {
+                CartScreen(
+                    mainNavController = mainNavController
+                )
+            }
+            composable(BottomNavigationScreen.Profile.route) {
+                ProfileScreen(
+                    mainNavController = mainNavController
+                )
+            }
         }
     }
 }

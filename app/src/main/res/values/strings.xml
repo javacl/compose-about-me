@@ -3,5 +3,19 @@
 
     <string name="label_article_list">Articles</string>
     <string name="label_user_profile">Profile</string>
+    <string name="label_article">Article</string>
+    <string name="label_full_name">Javad Sadeghi</string>
+    <string name="label_github">Github</string>
+    <string name="label_gitlab">Gitlab</string>
+    <string name="label_linkedin">Linkedin</string>
+    <string name="label_telegram">Telegram</string>
+    <string name="label_instagram">Instagram</string>
+    <string name="label_about_me">About Me</string>
+
+    <string name="link_github">https://github.com/javacl</string>
+    <string name="link_gitlab">https://gitlab.com/javacl</string>
+    <string name="link_linkedin">https://www.linkedin.com/in/javad-sadeghi-4b6826165</string>
+    <string name="link_telegram">https://telegram.me/javacl_sadeghi</string>
+    <string name="link_instagram">http://instagram.com/_u/javaclsadeghi</string>
 
 </resources>

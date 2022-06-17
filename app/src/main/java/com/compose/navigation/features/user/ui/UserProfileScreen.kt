@@ -1,34 +1,39 @@
 package com.compose.navigation.features.user.ui
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.compose.navigation.core.util.navigation.NavigationRoutes
+import com.compose.navigation.features.user.data.entities.UserProfileEntity
 
 @Composable
 fun UserProfileScreen(
     viewModel: UserProfileViewModel,
     mainNavController: NavHostController
 ) {
+    val userProfile =
+        viewModel.userProfile.collectAsState(initial = UserProfileEntity()).value
+
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .wrapContentSize(Alignment.Center)
     ) {
-        Button(
-            onClick = { mainNavController.navigate(NavigationRoutes.Article.route) },
-            modifier = Modifier.align(Alignment.CenterHorizontally)
-        ) {
-            Text(
-                text = "UserProfile",
-                style = MaterialTheme.typography.h6
+        Spacer(modifier = Modifier.height(16.dp))
+        userProfile.image?.let { painterResource(id = it) }?.let {
+            Image(
+                painter = it,
+                contentDescription = null,
+                modifier = Modifier
+                    .size(120.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .clip(CircleShape)
             )
         }
     }

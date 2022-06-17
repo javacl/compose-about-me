@@ -8,6 +8,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.compose.navigation.core.util.ui.theme.textPrimary
+import com.compose.navigation.core.util.ui.theme.x6_extra_bold
 
 @Composable
 fun ArticleScreen(
@@ -21,7 +23,8 @@ fun ArticleScreen(
         Text(
             text = "Article",
             modifier = Modifier.align(Alignment.CenterHorizontally),
-            style = MaterialTheme.typography.h6
+            style = MaterialTheme.typography.x6_extra_bold,
+            color = MaterialTheme.colors.textPrimary
         )
     }
 }

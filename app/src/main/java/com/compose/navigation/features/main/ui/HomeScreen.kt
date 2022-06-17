@@ -22,6 +22,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.compose.navigation.core.util.navigation.NavigationRoutes
+import com.compose.navigation.core.util.ui.theme.textPrimary
+import com.compose.navigation.core.util.ui.theme.textPrimaryLight
 import com.compose.navigation.features.article.ui.ArticleListScreen
 import com.compose.navigation.features.article.ui.ArticleListViewModel
 import com.compose.navigation.features.user.ui.UserProfileScreen
@@ -59,14 +61,16 @@ fun HomeScreen(
     )
     Scaffold(
         bottomBar = {
-            BottomNavigation {
+            BottomNavigation(
+                backgroundColor = MaterialTheme.colors.background
+            ) {
                 val navBackStackEntry by navController.currentBackStackEntryAsState()
                 val currentDestination = navBackStackEntry?.destination
                 items.forEach { screen ->
                     BottomNavigationItem(
                         icon = {
                             Icon(
-                                painterResource(id = screen.icon),
+                                painter = painterResource(id = screen.icon),
                                 contentDescription = stringResource(id = screen.title)
                             )
                         },
@@ -85,7 +89,9 @@ fun HomeScreen(
                                 // Restore state when re-selecting a previously selected item
                                 restoreState = true
                             }
-                        }
+                        },
+                        selectedContentColor = MaterialTheme.colors.textPrimary,
+                        unselectedContentColor = MaterialTheme.colors.textPrimaryLight
                     )
                 }
             }

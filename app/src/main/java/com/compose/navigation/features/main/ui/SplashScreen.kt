@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.compose.navigation.core.util.navigation.NavigationRoutes
+import com.compose.navigation.core.util.ui.theme.x6_extra_bold
 import kotlinx.coroutines.delay
 
 @Composable
@@ -27,7 +28,7 @@ fun SplashScreen(
         Text(
             text = "Splash",
             modifier = Modifier.align(Alignment.CenterHorizontally),
-            style = MaterialTheme.typography.h6
+            style = MaterialTheme.typography.x6_extra_bold
         )
     }
 

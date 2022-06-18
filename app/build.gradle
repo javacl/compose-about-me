@@ -70,6 +70,7 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
     implementation "androidx.activity:activity-compose:1.4.0"
     implementation "androidx.navigation:navigation-compose:2.4.2"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1'
 
     // Glide
     def glide_version = "4.12.0"

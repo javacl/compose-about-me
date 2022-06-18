@@ -13,6 +13,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -21,7 +23,7 @@ import com.compose.navigation.core.util.collectAsStateLifecycleAware
 import com.compose.navigation.core.util.ui.theme.divider
 import com.compose.navigation.core.util.ui.theme.textPrimary
 import com.compose.navigation.core.util.ui.theme.x6_bold
-import com.compose.navigation.features.user.data.entities.UserProfileEntity
+import com.compose.navigation.features.user.data.entity.UserProfileEntity
 
 @Composable
 fun UserProfileScreen(
@@ -29,6 +31,8 @@ fun UserProfileScreen(
     mainNavController: NavHostController
 ) {
     val userProfile by viewModel.userProfile.collectAsStateLifecycleAware(initial = UserProfileEntity())
+    val context = LocalContext.current
+    val uriHandler = LocalUriHandler.current
     LazyColumn(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -61,8 +65,13 @@ fun UserProfileScreen(
         }
         items(userProfile.socialNetwork) { item ->
             UserProfileSocialNetworkItem(item = item) {
+                item.link?.let {
+                    uriHandler.openUri(context.getString(it))
+                }
+
             }
             Divider(
+                modifier = Modifier.padding(start = 16.dp, end = 16.dp),
                 color = MaterialTheme.colors.divider,
                 thickness = 1.dp
             )

@@ -1,8 +1,8 @@
 package com.compose.navigation.features.user.data
 
 import com.compose.navigation.R
-import com.compose.navigation.features.user.data.entities.UserProfileEntity
-import com.compose.navigation.features.user.data.entities.UserProfileSocialNetworkEntity
+import com.compose.navigation.features.user.data.entity.UserProfileEntity
+import com.compose.navigation.features.user.data.entity.UserProfileSocialNetworkEntity
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 import javax.inject.Singleton

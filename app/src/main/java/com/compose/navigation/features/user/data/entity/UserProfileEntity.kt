@@ -1,4 +1,4 @@
-package com.compose.navigation.features.user.data.entities
+package com.compose.navigation.features.user.data.entity
 
 data class UserProfileEntity(
     val image: Int? = null,

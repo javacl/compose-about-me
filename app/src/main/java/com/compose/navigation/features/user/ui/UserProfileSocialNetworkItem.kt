@@ -1,11 +1,14 @@
 package com.compose.navigation.features.user.ui
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -14,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.compose.navigation.R
 import com.compose.navigation.core.util.ui.theme.textPrimary
 import com.compose.navigation.core.util.ui.theme.x3_bold
-import com.compose.navigation.features.user.data.entities.UserProfileSocialNetworkEntity
+import com.compose.navigation.features.user.data.entity.UserProfileSocialNetworkEntity
 
 @Composable
 fun UserProfileSocialNetworkItem(
@@ -24,10 +27,13 @@ fun UserProfileSocialNetworkItem(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp)
-            .clickable {
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = rememberRipple(color = MaterialTheme.colors.primary)
+            ) {
                 onClick.invoke()
-            },
+            }
+            .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         item.title?.let {

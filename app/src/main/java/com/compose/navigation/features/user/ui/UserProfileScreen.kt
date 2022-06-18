@@ -5,9 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -19,10 +17,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.compose.navigation.R
 import com.compose.navigation.core.util.collectAsStateLifecycleAware
-import com.compose.navigation.core.util.ui.theme.divider
-import com.compose.navigation.core.util.ui.theme.textPrimary
-import com.compose.navigation.core.util.ui.theme.x6_bold
+import com.compose.navigation.core.util.ui.theme.*
 import com.compose.navigation.features.user.data.entity.UserProfileEntity
 
 @Composable
@@ -68,13 +65,32 @@ fun UserProfileScreen(
                 item.link?.let {
                     uriHandler.openUri(context.getString(it))
                 }
-
             }
             Divider(
                 modifier = Modifier.padding(start = 16.dp, end = 16.dp),
                 color = MaterialTheme.colors.divider,
                 thickness = 1.dp
             )
+        }
+        item {
+            Button(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+                    .height(48.dp),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = MaterialTheme.colors.primary,
+                    contentColor = MaterialTheme.colors.onRipple
+                ),
+                shape = MaterialTheme.shapes.medium,
+                onClick = {}
+            ) {
+                Text(
+                    text = stringResource(id = R.string.label_about_me),
+                    style = MaterialTheme.typography.x3_bold,
+                    color = MaterialTheme.colors.textSecondary
+                )
+            }
         }
     }
 }

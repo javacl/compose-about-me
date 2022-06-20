@@ -1,5 +1,6 @@
 package com.compose.navigation.features.main.ui
 
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
@@ -9,6 +10,7 @@ import com.compose.navigation.core.util.navigation.NavigationRoutes
 import com.compose.navigation.features.article.ui.ArticleViewModel
 import com.compose.navigation.features.article.ui.ArticleScreen
 
+@ExperimentalMaterialApi
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()

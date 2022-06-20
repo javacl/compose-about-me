@@ -17,7 +17,6 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 import com.compose.navigation.R
 import com.compose.navigation.core.util.collectAsStateLifecycleAware
 import com.compose.navigation.core.util.ui.theme.*
@@ -31,6 +30,7 @@ fun UserProfileScreen(
     bottomSheetState: ModalBottomSheetState
 ) {
     val userProfile by viewModel.userProfile.collectAsStateLifecycleAware(initial = UserProfileEntity())
+    val isDarkTheme by viewModel.isDarkTheme.collectAsStateLifecycleAware(initial = false)
     val context = LocalContext.current
     val uriHandler = LocalUriHandler.current
     val coroutineScope = rememberCoroutineScope()
@@ -38,30 +38,49 @@ fun UserProfileScreen(
         modifier = Modifier.fillMaxSize()
     ) {
         item {
-            Column(
+            Box(
                 modifier = Modifier.fillMaxWidth()
             ) {
-                userProfile.image?.let { painterResource(id = it) }?.let {
+                Column(
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    userProfile.image?.let { painterResource(id = it) }?.let {
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Image(
+                            painter = it,
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(120.dp)
+                                .align(Alignment.CenterHorizontally)
+                                .clip(CircleShape)
+                        )
+                    }
+                    userProfile.fullName?.let {
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(
+                            text = stringResource(id = it),
+                            modifier = Modifier.align(Alignment.CenterHorizontally),
+                            style = MaterialTheme.typography.x6_bold,
+                            color = MaterialTheme.colors.textPrimary
+                        )
+                    }
                     Spacer(modifier = Modifier.height(16.dp))
-                    Image(
-                        painter = it,
+                }
+                IconButton(
+                    modifier = Modifier
+                        .size(52.dp)
+                        .padding(16.dp)
+                        .align(Alignment.TopStart),
+                    onClick = {
+                        viewModel.changeTheme()
+                    }
+                ) {
+                    Icon(
+                        painter = painterResource(id = if (isDarkTheme) R.drawable.ic_sun else R.drawable.ic_moon),
                         contentDescription = null,
-                        modifier = Modifier
-                            .size(120.dp)
-                            .align(Alignment.CenterHorizontally)
-                            .clip(CircleShape)
+                        tint = MaterialTheme.colors.textPrimary,
                     )
                 }
-                userProfile.fullName?.let {
-                    Spacer(modifier = Modifier.height(4.dp))
-                    Text(
-                        text = stringResource(id = it),
-                        modifier = Modifier.align(Alignment.CenterHorizontally),
-                        style = MaterialTheme.typography.x6_bold,
-                        color = MaterialTheme.colors.textPrimary
-                    )
-                }
-                Spacer(modifier = Modifier.height(16.dp))
             }
         }
         items(userProfile.socialNetwork) { item ->

@@ -6,7 +6,7 @@ object ApiUrlHelper {
         update()
     }
 
-    private lateinit var API_URL: String
+    lateinit var API_URL: String
 
     lateinit var GET_ARTICLE_LIST_API_URL: String
 

@@ -1,7 +1,5 @@
 package com.compose.navigation.core.util.viewModel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.compose.navigation.R
@@ -9,21 +7,23 @@ import com.compose.navigation.core.util.ExceptionHelper
 import com.compose.navigation.core.util.Exceptions
 import com.compose.navigation.core.util.model.ApiResult
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.withContext
 
 abstract class BaseViewModel : ViewModel() {
 
     protected val coroutineContext = viewModelScope.coroutineContext + Dispatchers.IO
 
-    private val _networkViewState = MutableLiveData<NetworkViewState>()
-    val networkViewState: LiveData<NetworkViewState>
+    private val _networkViewState = MutableStateFlow(getNetworkViewState())
+    val networkViewState: Flow<NetworkViewState>
         get() = _networkViewState
 
     data class NetworkViewState(
-        var showProgress: Boolean,
-        var showProgressMore: Boolean,
-        var showSuccess: Boolean,
-        var showError: Boolean,
+        val showProgress: Boolean,
+        val showProgressMore: Boolean,
+        val showSuccess: Boolean,
+        val showError: Boolean,
         val showValidationError: Boolean,
         val serverErrorMessage: String?,
         val errorMessage: Int,
@@ -66,7 +66,7 @@ abstract class BaseViewModel : ViewModel() {
         networkViewStates: NetworkViewState
     ) {
         withContext(Dispatchers.Main) {
-            _networkViewState.value = networkViewStates
+            _networkViewState.emit(networkViewStates)
         }
     }
 

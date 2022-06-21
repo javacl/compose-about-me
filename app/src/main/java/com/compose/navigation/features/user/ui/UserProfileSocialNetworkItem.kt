@@ -12,8 +12,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.compose.navigation.R
-import com.compose.navigation.core.ui.theme.textPrimary
-import com.compose.navigation.core.ui.theme.x3_bold
+import com.compose.navigation.core.theme.textPrimary
+import com.compose.navigation.core.theme.x3_bold
 import com.compose.navigation.features.user.data.entity.UserProfileSocialNetworkEntity
 
 @Composable

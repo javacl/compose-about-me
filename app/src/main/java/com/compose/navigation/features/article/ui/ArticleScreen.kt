@@ -8,8 +8,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.compose.navigation.core.ui.theme.textPrimary
-import com.compose.navigation.core.ui.theme.x6_extra_bold
+import com.compose.navigation.core.theme.textPrimary
+import com.compose.navigation.core.theme.x6_extra_bold
 
 @Composable
 fun ArticleScreen(

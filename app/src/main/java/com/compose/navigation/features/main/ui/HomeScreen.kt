@@ -21,10 +21,10 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.compose.navigation.R
 import com.compose.navigation.core.util.navigation.NavigationRoutes
-import com.compose.navigation.core.ui.theme.divider
-import com.compose.navigation.core.ui.theme.textPrimary
-import com.compose.navigation.core.ui.theme.textPrimaryLight
-import com.compose.navigation.core.ui.theme.x3_bold
+import com.compose.navigation.core.theme.divider
+import com.compose.navigation.core.theme.textPrimary
+import com.compose.navigation.core.theme.textPrimaryLight
+import com.compose.navigation.core.theme.x3_bold
 import com.compose.navigation.features.article.ui.ArticleListScreen
 import com.compose.navigation.features.article.ui.ArticleListViewModel
 import com.compose.navigation.features.user.ui.UserProfileScreen

@@ -12,6 +12,9 @@
     <string name="label_instagram">Instagram</string>
     <string name="label_about_me">About Me</string>
 
+    <string name="msg_empty_not_allow">This item cannot be empty!</string>
+    <string name="msg_retry">Retry</string>
+
     <string name="link_github">https://github.com/javacl</string>
     <string name="link_gitlab">https://gitlab.com/javacl</string>
     <string name="link_linkedin">https://www.linkedin.com/in/javacl</string>

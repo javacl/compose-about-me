@@ -1,9 +1,6 @@
 package com.compose.navigation.core.util.api
 
-import javax.inject.Inject
-
-@Suppress("PrivatePropertyName", "PropertyName")
-class ApiUrlHelper @Inject constructor() {
+object ApiUrlHelper {
 
     init {
         update()

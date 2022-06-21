@@ -3,12 +3,8 @@ package com.compose.navigation.core.util.api
 import com.compose.navigation.core.util.Exceptions
 import com.compose.navigation.core.util.model.ApiResult
 import retrofit2.Response
-import javax.inject.Inject
 
 open class BaseRemoteDataSource {
-
-    @Inject
-    lateinit var urls: ApiUrlHelper
 
     protected fun <T> checkApiResult(response: Response<T>): ApiResult<T> {
         if (response.isSuccessful) {

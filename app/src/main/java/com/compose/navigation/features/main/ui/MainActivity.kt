@@ -12,7 +12,7 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import com.compose.navigation.core.util.collectAsStateLifecycleAware
-import com.compose.navigation.core.util.ui.theme.ComposeNavigationTheme
+import com.compose.navigation.core.ui.theme.ComposeNavigationTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -19,7 +19,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.compose.navigation.R
 import com.compose.navigation.core.util.collectAsStateLifecycleAware
-import com.compose.navigation.core.util.ui.theme.*
+import com.compose.navigation.core.ui.theme.*
 import com.compose.navigation.features.user.data.entity.UserProfileEntity
 import kotlinx.coroutines.launch
 

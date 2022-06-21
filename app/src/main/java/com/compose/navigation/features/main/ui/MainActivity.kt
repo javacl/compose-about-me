@@ -1,7 +1,6 @@
 package com.compose.navigation.features.main.ui
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,14 +10,15 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import com.compose.navigation.core.util.collectAsStateLifecycleAware
 import com.compose.navigation.core.theme.ComposeNavigationTheme
+import com.compose.navigation.core.util.collectAsStateLifecycleAware
+import com.compose.navigation.core.util.ui.BaseActivity
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
 
 @ExperimentalMaterialApi
 @AndroidEntryPoint
-class MainActivity : ComponentActivity() {
+class MainActivity : BaseActivity() {
 
     private val viewModel by viewModels<MainViewModel>()
 

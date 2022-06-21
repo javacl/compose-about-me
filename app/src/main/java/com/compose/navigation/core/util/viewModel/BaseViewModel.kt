@@ -15,51 +15,23 @@ abstract class BaseViewModel : ViewModel() {
 
     protected val coroutineContext = viewModelScope.coroutineContext + Dispatchers.IO
 
-    private val _networkViewState = MutableStateFlow(getNetworkViewState())
+    private val _networkViewState = MutableStateFlow(NetworkViewState())
     val networkViewState: Flow<NetworkViewState>
         get() = _networkViewState
 
     data class NetworkViewState(
-        val showProgress: Boolean,
-        val showProgressMore: Boolean,
-        val showSuccess: Boolean,
-        val showError: Boolean,
-        val showValidationError: Boolean,
-        val serverErrorMessage: String?,
-        val errorMessage: Int,
-        val errorIcon: Int,
-        val requestTag: String?,
-        val validationError: Any?,
-        val unauthorized: Boolean,
-        val data: Any?
-    )
-
-    private fun getNetworkViewState(
-        showProgress: Boolean = false,
-        showProgressMore: Boolean = false,
-        showSuccess: Boolean = false,
-        showError: Boolean = false,
-        showValidationError: Boolean = false,
-        serverErrorMessage: String? = null,
-        errorMessage: Int = R.string.error_general,
-        errorIcon: Int = R.drawable.ic_general_error,
-        requestTag: String? = null,
-        validationError: Any? = null,
-        unauthorized: Boolean = false,
-        data: Any? = null
-    ) = NetworkViewState(
-        showProgress,
-        showProgressMore,
-        showSuccess,
-        showError,
-        showValidationError,
-        serverErrorMessage,
-        errorMessage,
-        errorIcon,
-        requestTag,
-        validationError,
-        unauthorized,
-        data
+        val showProgress: Boolean = false,
+        val showProgressMore: Boolean = false,
+        val showSuccess: Boolean = false,
+        val showError: Boolean = false,
+        val showValidationError: Boolean = false,
+        val serverErrorMessage: String? = null,
+        val errorMessage: Int = R.string.error_general,
+        val errorIcon: Int = R.drawable.ic_general_error,
+        val requestTag: String? = null,
+        val validationError: Any? = null,
+        val unauthorized: Boolean = false,
+        val data: Any? = null
     )
 
     private suspend fun emitNetworkViewState(
@@ -72,7 +44,7 @@ abstract class BaseViewModel : ViewModel() {
 
     protected suspend fun networkLoading(requestTag: String? = null) {
         emitNetworkViewState(
-            getNetworkViewState(
+            NetworkViewState(
                 showProgress = true,
                 requestTag = requestTag
             )
@@ -81,7 +53,7 @@ abstract class BaseViewModel : ViewModel() {
 
     protected suspend fun networkMoreLoading(requestTag: String? = null) {
         emitNetworkViewState(
-            getNetworkViewState(
+            NetworkViewState(
                 showProgressMore = true,
                 requestTag = requestTag
             )
@@ -113,7 +85,7 @@ abstract class BaseViewModel : ViewModel() {
         // When all result become Success we have to handle them
         if (!errorChecked)
             emitNetworkViewState(
-                getNetworkViewState(showSuccess = true)
+                NetworkViewState(showSuccess = true)
             )
     }
 
@@ -127,7 +99,7 @@ abstract class BaseViewModel : ViewModel() {
     ): NetworkViewState {
         return when (result) {
             is ApiResult.Success -> {
-                getNetworkViewState(
+                NetworkViewState(
                     showSuccess = true,
                     data = castData(result, requestTag),
                     requestTag = requestTag
@@ -135,14 +107,14 @@ abstract class BaseViewModel : ViewModel() {
             }
             is ApiResult.Error -> {
                 if (result.exception is Exceptions.ValidationException<*>) {
-                    getNetworkViewState(
+                    NetworkViewState(
                         showValidationError = true,
                         validationError = result.exception.errors,
                         requestTag = requestTag
                     )
                 } else {
                     val errorView = ExceptionHelper.getError(result.exception)
-                    getNetworkViewState(
+                    NetworkViewState(
                         showError = true,
                         serverErrorMessage = errorView.serverErrorMessage,
                         errorMessage = errorView.message,

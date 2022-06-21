@@ -2,30 +2,27 @@ package com.compose.navigation.core.util
 
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.runtime.*
+import kotlinx.coroutines.flow.distinctUntilChanged
 
 @Composable
 fun LazyListState.OnBottomReached(
-    // tells how many items before we reach the bottom of the list
-    // to call onLoadMore function
-    buffer: Int = 0,
+    buffer: Int = 2,
     onLoadMore: () -> Unit
 ) {
-    // Buffer must be positive.
-    // Or our list will never reach the bottom.
-    require(buffer >= 0) { "buffer cannot be negative, but was $buffer" }
-
-    val shouldLoadMore = remember {
+    val loadMore = remember {
         derivedStateOf {
-            val lastVisibleItem = layoutInfo.visibleItemsInfo.lastOrNull()
-                ?: return@derivedStateOf true
+            val totalItemsNumber = layoutInfo.totalItemsCount
+            val lastVisibleItemIndex = (layoutInfo.visibleItemsInfo.lastOrNull()?.index ?: 0) + 1
 
-            // subtract buffer from the total items
-            lastVisibleItem.index >= layoutInfo.totalItemsCount - 1 - buffer
+            lastVisibleItemIndex > (totalItemsNumber - buffer)
         }
     }
 
-    LaunchedEffect(shouldLoadMore) {
-        snapshotFlow { shouldLoadMore.value }
-            .collect { if (it) onLoadMore() }
+    LaunchedEffect(loadMore) {
+        snapshotFlow { loadMore.value }
+            .distinctUntilChanged()
+            .collect {
+                onLoadMore()
+            }
     }
 }

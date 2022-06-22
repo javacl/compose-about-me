@@ -6,15 +6,13 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 
 @Composable
 fun LazyListState.OnBottomReached(
-    buffer: Int = 2,
     onLoadMore: () -> Unit
 ) {
     val loadMore = remember {
         derivedStateOf {
             val totalItemsNumber = layoutInfo.totalItemsCount
             val lastVisibleItemIndex = (layoutInfo.visibleItemsInfo.lastOrNull()?.index ?: 0) + 1
-
-            lastVisibleItemIndex > (totalItemsNumber - buffer)
+            lastVisibleItemIndex > totalItemsNumber
         }
     }
 

@@ -9,6 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.navigation.NavHostController
 import com.compose.navigation.core.util.OnBottomReached
 import com.compose.navigation.core.util.collectAsStateLifecycleAware
+import com.compose.navigation.core.util.navigation.NavigationRoutes
 import com.compose.navigation.core.util.viewModel.BaseViewModel
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
@@ -31,10 +32,11 @@ fun ArticleListScreen(
         LazyColumn(state = lazyListState) {
             items(items = articleList ?: emptyList()) {
                 ArticleListItem(item = it) {
+                    mainNavController.navigate(NavigationRoutes.Article.route)
                 }
             }
 
-            if (networkViewState.showProgressMore){
+            if (networkViewState.showProgressMore) {
                 item {
                     CircularProgressIndicator()
                 }

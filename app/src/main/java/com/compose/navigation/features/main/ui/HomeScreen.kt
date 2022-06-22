@@ -116,15 +116,19 @@ fun HomeScreen(
                 startDestination = NavigationRoutes.ArticleList.route,
                 modifier = Modifier.padding(innerPadding)
             ) {
-                composable(NavigationRoutes.ArticleList.route) {
-                    val viewModel = hiltViewModel<ArticleListViewModel>()
+                composable(
+                    route = NavigationRoutes.ArticleList.route
+                ) {
+                    val viewModel = hiltViewModel<ArticleListViewModel>(it)
                     ArticleListScreen(
                         viewModel = viewModel,
                         mainNavController = mainNavController
                     )
                 }
-                composable(NavigationRoutes.UserProfile.route) {
-                    val viewModel = hiltViewModel<UserProfileViewModel>()
+                composable(
+                    route = NavigationRoutes.UserProfile.route
+                ) {
+                    val viewModel = hiltViewModel<UserProfileViewModel>(it)
                     UserProfileScreen(
                         viewModel = viewModel,
                         bottomSheetState = bottomSheetState

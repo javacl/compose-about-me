@@ -6,6 +6,7 @@ import com.compose.navigation.BuildConfig
 import com.compose.navigation.core.db.AppDb
 import com.compose.navigation.core.preferences.PreferencesDataStore
 import com.compose.navigation.core.util.api.ApiUrlHelper
+import com.compose.navigation.core.util.api.DefaultIfNullFactory
 import com.compose.navigation.core.util.api.HeaderInterceptor
 import com.compose.navigation.core.util.api.TLSSocketFactory
 import com.squareup.moshi.Moshi
@@ -39,6 +40,7 @@ class AppModule {
     @Provides
     fun provideMoshi(): Moshi {
         return Moshi.Builder()
+            .add(DefaultIfNullFactory())
             .addLast(KotlinJsonAdapterFactory())
             .build()
     }

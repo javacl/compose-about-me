@@ -17,7 +17,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
@@ -63,9 +62,7 @@ fun ArticleScreen(
                     .align(Alignment.CenterVertically)
                     .padding(end = 16.dp),
                 style = MaterialTheme.typography.x6_bold,
-                color = MaterialTheme.colors.textPrimary,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
+                color = MaterialTheme.colors.textPrimary
             )
         }
         article?.let {
@@ -92,9 +89,7 @@ fun ArticleScreen(
                         .padding(top = 8.dp),
                     text = it.title,
                     style = MaterialTheme.typography.x4_bold,
-                    color = MaterialTheme.colors.textPrimary,
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis
+                    color = MaterialTheme.colors.textPrimary
                 )
                 Row(
                     modifier = Modifier

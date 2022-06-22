@@ -36,7 +36,7 @@ fun SplashScreen(
     }
 
     LaunchedEffect(coroutineScope) {
-        delay(3000)
+        delay(1000)
         navController.navigate(NavigationRoutes.Home.route) {
             popUpTo(NavigationRoutes.Splash.route) { inclusive = true }
         }

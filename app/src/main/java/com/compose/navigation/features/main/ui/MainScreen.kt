@@ -41,7 +41,8 @@ fun MainScreen() {
         ) {
             val viewModel = hiltViewModel<ArticleViewModel>(it)
             ArticleScreen(
-                viewModel = viewModel
+                viewModel = viewModel,
+                mainNavController = navController
             )
         }
     }

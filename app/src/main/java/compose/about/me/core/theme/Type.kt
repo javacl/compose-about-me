@@ -22,7 +22,8 @@ val Typography = Typography(
 )
 
 val BaseTextStyle = TextStyle(
-    fontFamily = FontName
+    fontFamily = FontName,
+    lineHeight = 24.sp
 )
 
 val TextStyleX1 = BaseTextStyle.copy(

@@ -68,6 +68,12 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "Compose-AboutMe-${variant.versionName}-${variant.versionCode}.apk"
+        }
+    }
 }
 
 dependencies {

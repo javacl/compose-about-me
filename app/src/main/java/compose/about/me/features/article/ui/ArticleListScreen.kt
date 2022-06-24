@@ -17,12 +17,14 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.SwipeRefreshIndicator
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import compose.about.me.R
 import compose.about.me.core.theme.divider
 import compose.about.me.core.theme.red
 import compose.about.me.core.theme.textPrimary
 import compose.about.me.core.theme.x3_normal
+import compose.about.me.core.util.OnBottomReached
 import compose.about.me.core.util.collectAsStateLifecycleAware
 import compose.about.me.core.util.navigation.NavigationRoutes
 import compose.about.me.core.util.viewModel.BaseViewModel
@@ -83,6 +85,15 @@ fun ArticleListScreen(
         SwipeRefresh(
             modifier = Modifier.fillMaxSize(),
             state = swipeRefreshState,
+            indicator = { state, trigger ->
+                SwipeRefreshIndicator(
+                    state = state,
+                    refreshTriggerDistance = trigger,
+                    scale = true,
+                    backgroundColor = MaterialTheme.colors.background,
+                    contentColor = MaterialTheme.colors.textPrimary
+                )
+            },
             onRefresh = { viewModel.refresh() }
         ) {
             LazyColumn(
@@ -102,10 +113,28 @@ fun ArticleListScreen(
                 }
                 if (networkViewState.showProgressMore) {
                     item {
-                        CircularProgressIndicator()
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp)
+                        ) {
+                            CircularProgressIndicator(
+                                modifier = Modifier
+                                    .size(16.dp)
+                                    .align(Alignment.Center),
+                                color = MaterialTheme.colors.primary,
+                                strokeWidth = 2.dp
+                            )
+                        }
                     }
                 }
             }
+        }
+    }
+
+    lazyListState.OnBottomReached {
+        if (!networkViewState.showProgress && !networkViewState.showProgressMore) {
+            viewModel.getNextPage()
         }
     }
 }

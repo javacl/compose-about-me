@@ -19,7 +19,6 @@ class ArticleListViewModel @Inject constructor(
 
     val articleList = getArticleListLocal()
 
-
     init {
         getData()
     }

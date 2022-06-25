@@ -116,6 +116,13 @@ fun MainScreen() {
                 modifier = Modifier.padding(innerPadding)
             ) {
                 composable(
+                    route = NavigationRoutes.Splash.route
+                ) {
+                    SplashScreen(
+                        navController = navController
+                    )
+                }
+                composable(
                     route = NavigationRoutes.ArticleList.route
                 ) {
                     val viewModel = hiltViewModel<ArticleListViewModel>(it)
@@ -131,13 +138,6 @@ fun MainScreen() {
                     UserProfileScreen(
                         viewModel = viewModel,
                         bottomSheetState = bottomSheetState
-                    )
-                }
-                composable(
-                    route = NavigationRoutes.Splash.route
-                ) {
-                    SplashScreen(
-                        navController = navController
                     )
                 }
                 composable(

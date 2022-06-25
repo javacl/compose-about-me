@@ -8,7 +8,6 @@ sealed class NavigationRoutes(
     val title: Int = 0
 ) {
     object Splash : NavigationRoutes("splash")
-    object Home : NavigationRoutes("home")
     object ArticleList : NavigationRoutes(
         "article_list",
         R.drawable.ic_article,

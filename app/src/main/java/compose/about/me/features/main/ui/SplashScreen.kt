@@ -7,9 +7,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import compose.about.me.R
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
+import compose.about.me.R
 import compose.about.me.core.util.navigation.NavigationRoutes
 import kotlinx.coroutines.delay
 
@@ -37,7 +37,7 @@ fun SplashScreen(
 
     LaunchedEffect(coroutineScope) {
         delay(1000)
-        navController.navigate(NavigationRoutes.Home.route) {
+        navController.navigate(NavigationRoutes.ArticleList.route) {
             popUpTo(NavigationRoutes.Splash.route) { inclusive = true }
         }
     }

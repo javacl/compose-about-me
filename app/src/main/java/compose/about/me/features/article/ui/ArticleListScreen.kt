@@ -32,7 +32,7 @@ import compose.about.me.core.util.viewModel.BaseViewModel
 @Composable
 fun ArticleListScreen(
     viewModel: ArticleListViewModel,
-    mainNavController: NavHostController
+    navController: NavHostController
 ) {
     val networkViewState by viewModel.networkViewState.collectAsStateLifecycleAware(initial = BaseViewModel.NetworkViewState())
     val articleList by viewModel.articleList.collectAsStateLifecycleAware(initial = emptyList())
@@ -103,7 +103,7 @@ fun ArticleListScreen(
                 items(items = articleList ?: emptyList()) { item ->
                     ArticleListItem(item = item) {
                         val route = NavigationRoutes.Article.route + "/${item.id}"
-                        mainNavController.navigate(route)
+                        navController.navigate(route)
                     }
                     Divider(
                         modifier = Modifier.padding(start = 16.dp, end = 16.dp),

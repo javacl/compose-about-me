@@ -15,7 +15,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
-import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -99,17 +98,7 @@ fun MainScreen() {
                                     selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
                                     onClick = {
                                         navController.navigate(screen.route) {
-                                            // Pop up to the start destination of the graph to
-                                            // avoid building up a large stack of destinations
-                                            // on the back stack as users select items
-                                            popUpTo(navController.graph.findStartDestination().id) {
-                                                saveState = true
-                                            }
-                                            // Avoid multiple copies of the same destination when
-                                            // re-selecting the same item
-                                            launchSingleTop = true
-                                            // Restore state when re-selecting a previously selected item
-                                            restoreState = true
+                                            popUpTo(screen.route) { inclusive = true }
                                         }
                                     },
                                     selectedContentColor = MaterialTheme.colors.textPrimary,

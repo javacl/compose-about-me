@@ -100,7 +100,10 @@ fun ArticleListScreen(
                 modifier = Modifier.fillMaxSize(),
                 state = lazyListState
             ) {
-                items(items = articleList ?: emptyList()) { item ->
+                items(
+                    items = articleList ?: emptyList(),
+                    key = { it.id }
+                ) { item ->
                     ArticleListItem(item = item) {
                         val route = NavigationRoutes.Article.route + "/${item.id}"
                         navController.navigate(route)

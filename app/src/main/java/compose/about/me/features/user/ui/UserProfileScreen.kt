@@ -83,7 +83,7 @@ fun UserProfileScreen(
                 }
             }
         }
-        items(userProfile.socialNetwork) { item ->
+        items(items = userProfile.socialNetwork) { item ->
             UserProfileSocialNetworkItem(item = item) {
                 item.link?.let {
                     uriHandler.openUri(context.getString(it))

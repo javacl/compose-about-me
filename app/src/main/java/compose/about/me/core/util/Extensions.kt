@@ -5,6 +5,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import kotlinx.coroutines.flow.filter
 
@@ -42,4 +43,14 @@ fun rememberLifecycleEvent(lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.
         }
     }
     return state
+}
+
+@Composable
+fun <LO : LifecycleObserver> LO.ObserveLifecycle(lifecycle: Lifecycle) {
+    DisposableEffect(lifecycle) {
+        lifecycle.addObserver(this@ObserveLifecycle)
+        onDispose {
+            lifecycle.removeObserver(this@ObserveLifecycle)
+        }
+    }
 }

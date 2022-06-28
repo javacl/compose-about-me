@@ -1,5 +1,6 @@
 package compose.about.me.features.article.ui
 
+import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.viewModelScope
 import compose.about.me.core.util.viewModel.BaseViewModel
 import compose.about.me.features.article.domain.GetArticleListLocal
@@ -13,7 +14,7 @@ import javax.inject.Inject
 class ArticleListViewModel @Inject constructor(
     getArticleListLocal: GetArticleListLocal,
     private val getArticleListRemote: GetArticleListRemote
-) : BaseViewModel() {
+) : BaseViewModel(), DefaultLifecycleObserver {
 
     private var currentPage = 1
 

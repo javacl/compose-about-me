@@ -10,6 +10,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -26,6 +27,7 @@ import compose.about.me.core.theme.divider
 import compose.about.me.core.theme.textPrimary
 import compose.about.me.core.theme.textPrimaryLight
 import compose.about.me.core.theme.x3_bold
+import compose.about.me.core.util.ObserveLifecycle
 import compose.about.me.core.util.navigation.NavigationRoutes
 import compose.about.me.features.article.ui.*
 import compose.about.me.features.user.ui.UserProfileScreen
@@ -126,6 +128,7 @@ fun MainScreen() {
                     route = NavigationRoutes.ArticleList.route
                 ) {
                     val viewModel = hiltViewModel<ArticleListViewModel>(it)
+                    viewModel.ObserveLifecycle(lifecycle = LocalLifecycleOwner.current.lifecycle)
                     ArticleListScreen(
                         viewModel = viewModel,
                         navController = navController

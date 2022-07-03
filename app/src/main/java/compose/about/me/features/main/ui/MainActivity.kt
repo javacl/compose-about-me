@@ -10,12 +10,14 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import compose.about.me.core.theme.ComposeNavigationTheme
 import compose.about.me.core.util.collectAsStateLifecycleAware
 import compose.about.me.core.util.ui.BaseActivity
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
 
+@ExperimentalMaterialNavigationApi
 @ExperimentalMaterialApi
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {

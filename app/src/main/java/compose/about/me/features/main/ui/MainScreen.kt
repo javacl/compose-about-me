@@ -1,9 +1,7 @@
 package compose.about.me.features.main.ui
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -22,24 +20,26 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import compose.about.me.R
+import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
+import com.google.accompanist.navigation.material.ModalBottomSheetLayout
+import com.google.accompanist.navigation.material.bottomSheet
+import com.google.accompanist.navigation.material.rememberBottomSheetNavigator
 import compose.about.me.core.theme.divider
 import compose.about.me.core.theme.textPrimary
 import compose.about.me.core.theme.textPrimaryLight
-import compose.about.me.core.theme.x3_bold
 import compose.about.me.core.util.ObserveLifecycle
 import compose.about.me.core.util.navigation.NavigationRoutes
 import compose.about.me.features.article.ui.*
+import compose.about.me.features.user.ui.AboutMeScreen
 import compose.about.me.features.user.ui.UserProfileScreen
 import compose.about.me.features.user.ui.UserProfileViewModel
 
+@ExperimentalMaterialNavigationApi
 @ExperimentalMaterialApi
 @Composable
 fun MainScreen() {
-    val navController = rememberNavController()
-    val bottomSheetState = rememberModalBottomSheetState(
-        initialValue = ModalBottomSheetValue.Hidden
-    )
+    val bottomSheetNavigator = rememberBottomSheetNavigator()
+    val navController = rememberNavController(bottomSheetNavigator)
     val scaffoldState = rememberScaffoldState()
     val showBottomBar = remember { mutableStateOf(false) }
 
@@ -50,27 +50,13 @@ fun MainScreen() {
 
     navController.addOnDestinationChangedListener { _, destination, _ ->
         showBottomBar.value = when (destination.route) {
-            NavigationRoutes.ArticleList.route, NavigationRoutes.UserProfile.route -> true
+            NavigationRoutes.ArticleList.route, NavigationRoutes.UserProfile.route, NavigationRoutes.AboutMe.route -> true
             else -> false
         }
     }
 
     ModalBottomSheetLayout(
-        sheetState = bottomSheetState,
-        sheetContent = {
-            Column(
-                Modifier
-                    .fillMaxWidth()
-                    .wrapContentHeight()
-                    .padding(16.dp)
-            ) {
-                Text(
-                    text = stringResource(id = R.string.txt_about_me),
-                    style = MaterialTheme.typography.x3_bold,
-                    color = MaterialTheme.colors.textPrimary
-                )
-            }
-        },
+        bottomSheetNavigator = bottomSheetNavigator,
         sheetBackgroundColor = MaterialTheme.colors.background,
         scrimColor = MaterialTheme.colors.primary.copy(alpha = 0.2f)
     ) {
@@ -140,7 +126,7 @@ fun MainScreen() {
                     val viewModel = hiltViewModel<UserProfileViewModel>(it)
                     UserProfileScreen(
                         viewModel = viewModel,
-                        bottomSheetState = bottomSheetState
+                        navController = navController
                     )
                 }
                 composable(
@@ -152,6 +138,11 @@ fun MainScreen() {
                         viewModel = viewModel,
                         mainNavController = navController
                     )
+                }
+                bottomSheet(
+                    route = NavigationRoutes.AboutMe.route
+                ) {
+                    AboutMeScreen()
                 }
             }
         }

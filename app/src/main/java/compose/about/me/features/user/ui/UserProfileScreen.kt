@@ -8,7 +8,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -17,23 +16,23 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import compose.about.me.R
-import compose.about.me.core.util.collectAsStateLifecycleAware
 import compose.about.me.core.theme.*
+import compose.about.me.core.util.collectAsStateLifecycleAware
+import compose.about.me.core.util.navigation.NavigationRoutes
 import compose.about.me.features.user.data.entity.UserProfileEntity
-import kotlinx.coroutines.launch
 
 @ExperimentalMaterialApi
 @Composable
 fun UserProfileScreen(
     viewModel: UserProfileViewModel,
-    bottomSheetState: ModalBottomSheetState
+    navController: NavController
 ) {
     val userProfile by viewModel.userProfile.collectAsStateLifecycleAware(initial = UserProfileEntity())
     val isDarkTheme by viewModel.isDarkTheme.collectAsStateLifecycleAware(initial = false)
     val context = LocalContext.current
     val uriHandler = LocalUriHandler.current
-    val coroutineScope = rememberCoroutineScope()
     LazyColumn(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -107,9 +106,7 @@ fun UserProfileScreen(
                 ),
                 shape = MaterialTheme.shapes.medium,
                 onClick = {
-                    coroutineScope.launch {
-                        bottomSheetState.show()
-                    }
+                    navController.navigate(NavigationRoutes.AboutMe.route)
                 }
             ) {
                 Text(

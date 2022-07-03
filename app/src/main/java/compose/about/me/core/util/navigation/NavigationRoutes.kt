@@ -20,4 +20,6 @@ sealed class NavigationRoutes(
         R.drawable.ic_user,
         R.string.label_user_profile
     )
+
+    object AboutMe : NavigationRoutes("about_me")
 }

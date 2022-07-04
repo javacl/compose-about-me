@@ -136,7 +136,7 @@ fun MainScreen() {
                     val viewModel = hiltViewModel<ArticleViewModel>(it)
                     ArticleScreen(
                         viewModel = viewModel,
-                        mainNavController = navController
+                        navController = navController
                     )
                 }
                 bottomSheet(

@@ -26,7 +26,7 @@ import compose.about.me.features.article.data.entities.ArticleEntity
 @Composable
 fun ArticleScreen(
     viewModel: ArticleViewModel,
-    mainNavController: NavHostController
+    navController: NavHostController
 ) {
     val context = LocalContext.current
     val article by viewModel.article.collectAsStateLifecycleAware(initial = ArticleEntity())
@@ -44,7 +44,7 @@ fun ArticleScreen(
                     .size(52.dp)
                     .padding(16.dp),
                 onClick = {
-                    mainNavController.popBackStack()
+                    navController.popBackStack()
                 }
             ) {
                 Icon(

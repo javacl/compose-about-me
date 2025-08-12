@@ -1,0 +1,126 @@
+[versions]
+projectApplicationId = "compose.about.me"
+projectMinSdkVersion = "24"
+projectTargetSdkVersion = "36"
+projectCompileSdkVersion = "36"
+projectVersionCode = "1"
+projectVersionName = "1.0.0"
+
+androidGradlePlugin = "8.12.0"
+kotlin = "2.2.0"
+ksp = "2.2.0-2.0.2"
+
+splashScreen = "1.0.1"
+
+hilt = "2.57"
+
+coreKtx = "1.16.0"
+
+coroutines = "1.10.2"
+
+composeBOM = "2025.07.00"
+composeActivity = "1.10.1"
+composeNavigation = "2.9.3"
+composeHiltNavigation = "1.2.0"
+
+lifecycle = "2.9.2"
+
+room = "2.7.2"
+
+coil = "2.7.0"
+
+okhttp = "5.1.0"
+
+retrofit = "3.0.0"
+
+kotlinxSerializationJson = "1.9.0"
+
+datastore = "1.1.7"
+
+material = "1.12.0"
+
+junit = "4.13.2"
+androidx-test-ext-junit = "1.3.0"
+espresso-core = "3.7.0"
+
+[libraries]
+splash-screen = { module = "androidx.core:core-splashscreen", version.ref = "splashScreen" }
+
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+
+core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+
+lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
+lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+lifecycle-service = { group = "androidx.lifecycle", name = "lifecycle-service", version.ref = "lifecycle" }
+lifecycle-process = { group = "androidx.lifecycle", name = "lifecycle-process", version.ref = "lifecycle" }
+
+coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+
+compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBOM" }
+compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "composeActivity" }
+compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "composeNavigation" }
+compose-lifecycle-runtime = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle" }
+compose-lifecycle-viewModel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+compose-hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "composeHiltNavigation" }
+
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+coil-gif = { group = "io.coil-kt", name = "coil-gif", version.ref = "coil" }
+coil-svg = { group = "io.coil-kt", name = "coil-svg", version.ref = "coil" }
+coil-base = { group = "io.coil-kt", name = "coil-base", version.ref = "coil" }
+
+okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+
+retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-kotlin-serialization = { group = "com.squareup.retrofit2", name = "converter-kotlinx-serialization", version.ref = "retrofit" }
+
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+
+datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
+
+google-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
+
+# Dependencies of the included build-logic
+android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
+kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
+room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "room" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+room = { id = "androidx.room", version.ref = "room" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlinx-serialization = { id = "kotlinx-serialization", version = "unspecified" }
+
+# Plugins defined by this project
+project-android-application = { id = "project.android.application", version = "unspecified" }
+project-android-library = { id = "project.android.library", version = "unspecified" }
+project-android-compose-application = { id = "project.android.compose.application", version = "unspecified" }
+project-android-compose-library = { id = "project.android.compose.library", version = "unspecified" }
+project-android-hilt = { id = "project.android.hilt", version = "unspecified" }
+project-android-test = { id = "project.android.test", version = "unspecified" }
+project-android-room = { id = "project.android.room", version = "unspecified" }
+project-android-coil = { id = "project.android.coil", version = "unspecified" }
+project-android-okhttp = { id = "project.android.okhttp", version = "unspecified" }
+project-android-retrofit = { id = "project.android.retrofit", version = "unspecified" }
+project-android-json = { id = "project.android.json", version = "unspecified" }
+project-android-lifecycle = { id = "project.android.lifecycle", version = "unspecified" }
+
+# Module plugins
+project-android-data = { id = "project.android.data", version = "unspecified" }
+project-android-domain = { id = "project.android.domain", version = "unspecified" }
+project-android-feature = { id = "project.android.feature", version = "unspecified" }

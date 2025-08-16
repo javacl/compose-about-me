@@ -10,3 +10,7 @@ plugins {
 android {
     namespace = "compose.about.me.network"
 }
+
+dependencies {
+    implementation(projects.core.common)
+}

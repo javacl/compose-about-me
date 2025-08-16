@@ -40,3 +40,6 @@ include(":core:design-system")
 include(":core:datastore")
 include(":core:network")
 include(":core:database")
+
+// data
+include(":data:article")

@@ -39,4 +39,6 @@ dependencies {
         implementation(common)
         implementation(designSystem)
     }
+
+    implementation(projects.data.article)
 }

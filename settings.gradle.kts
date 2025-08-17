@@ -42,12 +42,16 @@ include(":core:network")
 include(":core:database")
 
 // data
+include(":data:setting")
 include(":data:article")
 
 // domain
+include(":domain:main")
 include(":domain:articles")
 include(":domain:article")
+include(":domain:profile")
 
 // feature
 include(":feature:articles")
 include(":feature:article")
+include(":feature:profile")

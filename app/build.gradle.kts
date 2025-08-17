@@ -40,6 +40,8 @@ dependencies {
         implementation(designSystem)
     }
 
+    implementation(projects.domain.main)
+
     projects.feature.apply {
         implementation(articles)
         implementation(article)

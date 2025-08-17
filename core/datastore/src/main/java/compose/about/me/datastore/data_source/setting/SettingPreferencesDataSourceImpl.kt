@@ -1,4 +1,4 @@
-package compose.about.me.database.data_source.setting
+package compose.about.me.datastore.data_source.setting
 
 import android.content.Context
 import androidx.datastore.core.DataStore

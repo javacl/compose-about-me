@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">compose-about-me</string>
+
+    <string name="error_server">ارتباط با سرور برقرار نیست :(</string>
+    <string name="error_general">متاسفیم؛ بنظر می‌رسه مشکلی به‌وجود اومده!</string>
+    <string name="error_connection">لطفا به اینترنت متصل شین.</string>
 </resources>

@@ -15,4 +15,6 @@ dependencies {
         implementation(splash.screen)
         implementation(google.material)
     }
+
+    implementation(projects.core.common)
 }

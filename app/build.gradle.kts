@@ -40,5 +40,8 @@ dependencies {
         implementation(designSystem)
     }
 
-    implementation(projects.data.article)
+    projects.feature.apply {
+        implementation(articles)
+        implementation(article)
+    }
 }

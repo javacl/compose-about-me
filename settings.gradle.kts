@@ -43,3 +43,11 @@ include(":core:database")
 
 // data
 include(":data:article")
+
+// domain
+include(":domain:articles")
+include(":domain:article")
+
+// feature
+include(":feature:articles")
+include(":feature:article")

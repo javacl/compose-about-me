@@ -12,5 +12,7 @@ import dagger.hilt.components.SingletonComponent
 internal interface DispatcherModule {
 
     @Binds
-    fun bindDispatcherProvider(impl: DispatcherProviderImpl): DispatcherProvider
+    fun bindDispatcherProvider(
+        dispatcherProviderImpl: DispatcherProviderImpl
+    ): DispatcherProvider
 }

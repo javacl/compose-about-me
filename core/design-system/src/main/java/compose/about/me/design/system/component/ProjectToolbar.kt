@@ -66,7 +66,7 @@ fun ProjectBackToolbar(
         verticalAlignment = Alignment.CenterVertically
     ) {
         ProjectToolbarIcon(
-            icon = R.drawable.ic_rounded_filled_arrow_back_ios_new_w300,
+            icon = R.drawable.ic_rounded_arrow_back_ios_new_w300,
             onClick = {
                 if (onBackClick == null) {
                     onBackPressDispatcher?.onBackPressed()

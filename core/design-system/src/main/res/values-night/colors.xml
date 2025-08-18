@@ -2,4 +2,5 @@
 <resources>
     <color name="colorPrimary">#FF82CFFF</color>
     <color name="colorSurface">#FF121316</color>
+    <color name="colorOnSurface">#FFE3E2E6</color>
 </resources>

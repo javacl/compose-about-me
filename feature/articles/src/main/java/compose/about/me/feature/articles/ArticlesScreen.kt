@@ -54,6 +54,7 @@ internal fun ArticlesScreen(
                             title = item.title,
                             author = item.author,
                             publishedAt = item.publishedAt,
+                            enabled = true,
                             onClick = { onArticleClick(item.id) }
                         )
 

@@ -6,6 +6,7 @@
     <string name="error_connection">Connect to Internet!</string>
 
     <string name="label_articles">Articles</string>
+    <string name="label_article">Article</string>
     <string name="label_profile">Profile</string>
     <string name="label_retry">Retry</string>
 </resources>

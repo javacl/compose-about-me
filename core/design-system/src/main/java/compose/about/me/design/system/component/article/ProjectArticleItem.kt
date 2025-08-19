@@ -25,12 +25,16 @@ fun ProjectArticleItem(
     title: String?,
     author: String?,
     publishedAt: String?,
+    enabled: Boolean,
     onClick: () -> Unit
 ) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable(onClick = onClick)
+            .clickable(
+                onClick = onClick,
+                enabled = enabled
+            )
             .padding(16.dp)
     ) {
         ProjectImage(

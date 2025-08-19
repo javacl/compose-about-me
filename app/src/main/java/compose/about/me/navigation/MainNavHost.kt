@@ -2,6 +2,7 @@ package compose.about.me.navigation
 
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -14,13 +15,15 @@ import compose.about.me.feature.articles.navigation.articlesScreen
 import compose.about.me.feature.profile.navigation.profileScreen
 
 @Composable
-fun MainNavHost(
-    navController: NavHostController
+fun ColumnScope.MainNavHost(
+    navController: NavHostController,
 ) {
     NavHost(
         navController = navController,
         startDestination = ARTICLES_ROUTE,
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .weight(1f),
         enterTransition = { EnterTransition.None },
         exitTransition = { ExitTransition.None },
         popEnterTransition = { EnterTransition.None },

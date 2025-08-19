@@ -80,7 +80,7 @@ fun ProjectBackToolbar(
         if (text != null) {
             Text(
                 text = text,
-                style = MaterialTheme.typography.bodyMedium,
+                style = MaterialTheme.typography.labelLarge,
                 color = contentColor,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis

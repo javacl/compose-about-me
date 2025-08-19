@@ -10,7 +10,7 @@ internal interface ArticleService {
     @GET("everything")
     suspend fun getArticles(
         @Query(value = "apiKey", encoded = true) apiKey: String,
-        @Query(value = "domains", encoded = true) domains: String,
+        @Query(value = "q", encoded = true) q: String,
         @Query(value = "page", encoded = true) page: Int
     ): Response<ArticlesResponse>
 }

@@ -26,7 +26,7 @@ internal class ArticleRemoteDataSourceImpl @Inject constructor(
         call = {
             service.getArticles(
                 apiKey = "10307e6f365542929dd5d0a9ed2395bb",
-                domains = "wsj.com",
+                q = "apple",
                 page = page
             )
         },

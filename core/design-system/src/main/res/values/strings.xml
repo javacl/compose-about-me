@@ -5,5 +5,7 @@
     <string name="error_general">A problem occurred!</string>
     <string name="error_connection">Connect to Internet!</string>
 
+    <string name="label_articles">Articles</string>
+    <string name="label_profile">Profile</string>
     <string name="label_retry">Retry</string>
 </resources>

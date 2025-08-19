@@ -9,6 +9,7 @@ import compose.about.me.feature.article.ArticleScreen
 const val ARTICLE_ROUTE = "article_route"
 
 fun NavController.navigateToArticle(
+    id: Int,
     navOptions: NavOptions? = null
 ) = navigate(
     route = ARTICLE_ROUTE,

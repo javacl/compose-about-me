@@ -45,5 +45,6 @@ dependencies {
     projects.feature.apply {
         implementation(articles)
         implementation(article)
+        implementation(profile)
     }
 }

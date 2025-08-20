@@ -5,8 +5,11 @@
     <string name="error_general">A problem occurred!</string>
     <string name="error_connection">Connect to Internet!</string>
 
+    <string name="txt_about_me">Experienced mobile developer specializing in Android, iOS, and cross-platform applications.</string>
+
     <string name="label_articles">Articles</string>
     <string name="label_article">Article</string>
     <string name="label_profile">Profile</string>
     <string name="label_retry">Retry</string>
+    <string name="label_my_name">Javad Sadeghi</string>
 </resources>

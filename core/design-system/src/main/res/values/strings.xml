@@ -11,5 +11,9 @@
     <string name="label_article">Article</string>
     <string name="label_profile">Profile</string>
     <string name="label_retry">Retry</string>
+    <string name="label_application_theme">Application Theme</string>
+    <string name="label_default">Default</string>
+    <string name="label_light">Light</string>
+    <string name="label_dark">Dark</string>
     <string name="label_my_name">Javad Sadeghi</string>
 </resources>

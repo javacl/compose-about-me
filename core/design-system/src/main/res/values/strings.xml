@@ -16,4 +16,9 @@
     <string name="label_light">Light</string>
     <string name="label_dark">Dark</string>
     <string name="label_my_name">Javad Sadeghi</string>
+
+    <string name="link_github">https://github.com/javacl</string>
+    <string name="link_gitlab">https://gitlab.com/javacl</string>
+    <string name="link_linkedin">https://www.linkedin.com/in/javacl</string>
+    <string name="link_telegram">https://telegram.me/javaclsadeghi</string>
 </resources>

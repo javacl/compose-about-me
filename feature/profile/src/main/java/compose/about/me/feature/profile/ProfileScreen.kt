@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -40,6 +41,8 @@ import compose.about.me.feature.profile.model.ThemeModel
 internal fun ProfileScreen(
     viewModel: ProfileViewModel = hiltViewModel()
 ) {
+    val uriHandler = LocalUriHandler.current
+
     val (state, event) = use(viewModel = viewModel)
 
     val scrollState = rememberScrollState()
@@ -51,7 +54,9 @@ internal fun ProfileScreen(
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        ProfileItem()
+        ProfileItem(
+            onSocialClick = { url -> uriHandler.openUri(url) }
+        )
 
         ThemesItem(
             theme = state.theme,
@@ -61,7 +66,14 @@ internal fun ProfileScreen(
 }
 
 @Composable
-private fun ProfileItem() {
+private fun ProfileItem(
+    onSocialClick: (String) -> Unit
+) {
+    val linkedInUrl = stringResource(R.string.url_linkedin)
+    val githubInUrl = stringResource(R.string.url_github)
+    val gitlabInUrl = stringResource(R.string.url_gitlab)
+    val telegramInUrl = stringResource(R.string.url_telegram)
+
     Image(
         painter = painterResource(R.drawable.img_profile),
         contentDescription = null,
@@ -90,7 +102,7 @@ private fun ProfileItem() {
 
     SocialItem(
         painter = painterResource(R.drawable.img_linkedin_logo),
-        onClick = {}
+        onClick = { onSocialClick(linkedInUrl) }
     )
 
     Row(
@@ -98,20 +110,20 @@ private fun ProfileItem() {
     ) {
         SocialItem(
             painter = painterResource(R.drawable.img_github_logo),
-            onClick = {}
+            onClick = { onSocialClick(githubInUrl) }
         )
 
         Spacer(modifier = Modifier.width(80.dp))
 
         SocialItem(
             painter = painterResource(R.drawable.img_gitlab_logo),
-            onClick = {}
+            onClick = { onSocialClick(gitlabInUrl) }
         )
     }
 
     SocialItem(
         painter = painterResource(R.drawable.img_telegram_logo),
-        onClick = {}
+        onClick = { onSocialClick(telegramInUrl) }
     )
 }
 

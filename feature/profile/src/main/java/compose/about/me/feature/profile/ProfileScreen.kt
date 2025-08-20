@@ -123,7 +123,8 @@ private fun SocialItem(
     modifier = Modifier
         .size(48.dp)
         .clip(CircleShape)
-        .clickable(onClick = onClick),
+        .clickable(onClick = onClick)
+        .background(Color.White),
     painter = painter,
     contentDescription = null
 )

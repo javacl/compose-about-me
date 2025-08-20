@@ -1,7 +1,5 @@
 package compose.about.me.navigation
 
-import androidx.compose.animation.EnterTransition
-import androidx.compose.animation.ExitTransition
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -23,11 +21,7 @@ fun ColumnScope.MainNavHost(
         startDestination = ARTICLES_ROUTE,
         modifier = Modifier
             .fillMaxSize()
-            .weight(1f),
-        enterTransition = { EnterTransition.None },
-        exitTransition = { ExitTransition.None },
-        popEnterTransition = { EnterTransition.None },
-        popExitTransition = { ExitTransition.None }
+            .weight(1f)
     ) {
         articlesScreen(
             onArticleClick = navController::navigateToArticle

@@ -1,14 +1,12 @@
 # Android Modular Clean MVI architecture
 
-<p align="center">
- <img src='https://user-images.githubusercontent.com/45559398/172485205-6fa4e496-4661-49ff-90f1-7bacf2ea529a.gif' width='300'>
-</p>
-
 Hi everyone. 🧍‍
 
 This is a sample project. 😜
 
 Modular Clean MVI has become one of the standard architectures around which large Android projects are developed.
+
+Figma link --->  [Click here]([https://github.com/javacl/compose-about-me](https://www.figma.com/design/lcx2ALm19iilHmlyAy1o8h/about-me))
 
 ### The basic flow looks like this 😎
 

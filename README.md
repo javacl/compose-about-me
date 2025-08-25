@@ -3,7 +3,6 @@
 Hi everyone 👋
 
 This is a sample project showcasing a modern Android Modular Clean MVI architecture.
-
 Modular Clean MVI has become one of the most popular and scalable architectures for building large Android applications.
 
 Figma Design --->  [View on Figma](https://github.com/javacl/compose-about-me](https://www.figma.com/design/lcx2ALm19iilHmlyAy1o8h/about-me))
@@ -21,7 +20,6 @@ The project is structured around Clean Architecture + MVI, ensuring:
    * Reactive and predictable UI state management
 
 ### 🛠️ Tech Stack
-
 This project leverages modern Android development tools and libraries:
    * Networking: Retrofit + OkHttp + Kotlin Serialization
    * Image Loading: Coil
@@ -32,6 +30,5 @@ This project leverages modern Android development tools and libraries:
    * Architecture Components: ViewModel
 
 ### ❤️ Final Note
-
 I hope you find this project helpful and inspiring for your own work.
 Contributions, suggestions, and feedback are always welcome! ✨

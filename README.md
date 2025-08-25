@@ -6,7 +6,7 @@ This is a sample project. 😜
 
 Modular Clean MVI has become one of the standard architectures around which large Android projects are developed.
 
-Figma link --->  [Click here]([https://github.com/javacl/compose-about-me](https://www.figma.com/design/lcx2ALm19iilHmlyAy1o8h/about-me))
+Figma link --->  [Click here](https://github.com/javacl/compose-about-me](https://www.figma.com/design/lcx2ALm19iilHmlyAy1o8h/about-me))
 
 ### The basic flow looks like this 😎
 
